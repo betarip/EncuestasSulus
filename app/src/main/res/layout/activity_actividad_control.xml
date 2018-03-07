@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:theme="@style/AppTheme"
     tools:context="com.sulus.encuestasapp.Vistas.ActividadControl">
 
 
@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:text="Subir encuestas"
             android:id="@+id/boton_subir"
-            android:onClick="subirEncuestas" />
+            android:onClick="subirEncuestas"
+            />
 
         <Button
 

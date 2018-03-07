@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:theme="@style/AppTheme"
     tools:context="com.sulus.encuestasapp.Vistas.ActividadInicioEncuesta">
 
 
@@ -34,7 +34,7 @@
             android:id="@+id/edit_sec_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Municipio">
+            android:hint="Sección">
 
             <EditText
                 android:id="@+id/edit_sec"
@@ -49,13 +49,13 @@
             android:id="@+id/edit_nombre_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Municipio">
+            android:hint="Nombre">
 
             <EditText
                 android:id="@+id/edit_nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="text"
                 android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
@@ -68,17 +68,18 @@
             <Button
 
                 android:id="@+id/boton_iniciar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.61"
+                android:layout_weight="0.5"
                 android:onClick="iniciarEncuesta"
                 android:text="Comenzar" />
 
             <Button
 
                 android:id="@+id/boton_cancelar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:text="Cancelar"
 
                 />

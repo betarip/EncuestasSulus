@@ -1,5 +1,6 @@
 package com.sulus.encuestasapp.Vistas;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
     }
 
     public void iniciarEncuesta(View view) {
-
+        Intent i = new Intent(this,
+                com.sulus.encuestasapp.Vistas.EncuestasView.class);
+        startActivity(i);
     }
 }

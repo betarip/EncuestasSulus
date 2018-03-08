@@ -5,7 +5,7 @@
 
     <item>
         <bitmap
-            android:src="@drawable/sulusvertical"
+            android:src="@drawable/splash"
             android:gravity="center" />
 
     </item>

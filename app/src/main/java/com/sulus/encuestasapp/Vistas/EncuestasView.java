@@ -13,13 +13,23 @@ public class EncuestasView extends AppCompatActivity {
     private ViewPager viewPager;
     TabsPagerAdapter myAdapter;
 
+    String[] TabFragmentB = new String[5];
+
+    public void setTabFragmentB(int index, String t) {
+        TabFragmentB[0] = t;
+    }
+
+    public String getTabFragmentB(int index) {
+        return TabFragmentB[index];
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encuestas_view);
-        ViewPager vpPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         myAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-        vpPager.setAdapter(myAdapter);
+        viewPager.setAdapter(myAdapter);
     }
 
     public void onRadioButtonClicked(View view) {
@@ -48,6 +58,10 @@ public class EncuestasView extends AppCompatActivity {
 
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
+    }
+
+    public void siguientePregunta() {
+        viewPager.setCurrentItem(getItem(+1), true);
     }
 
 

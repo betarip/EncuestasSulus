@@ -29,15 +29,19 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return FirstFragment.newInstance(0, "Pregunta # 1");
             case 1:
-                return FirstFragment.newInstance(1, "Pregunta # 2");
+                return SelectionFragment.newInstance("¿Pregunta                        " +
+                        "nueva porpe que es larga ye es la de prueba?", 2);
             case 2:
-                return FirstFragment.newInstance(2, "Pregunta # 3");
+                return SelectionFragment.newInstance("¿Pregunta                        " +
+                        "nueva porpe que es larga ye es la de prueba?", 3);
             case 3:
-                return FirstFragment.newInstance(3, "Pregunta # 4");
+                return SelectionFragment.newInstance("¿Pregunta                        " +
+                        "nueva porpe que es larga ye es la de prueba?", 4);
             case 4:
-                return FirstFragment.newInstance(4, "Pregunta # 5");
+                return SelectionFragment.newInstance("¿Pregunta                        " +
+                        "nueva porpe que es larga ye es la de prueba?", 5);
             case 5:
-                return FirstFragment.newInstance(5, "Respuestas");
+                return new RespuestasFragment();
             default:
                 return null;
         }

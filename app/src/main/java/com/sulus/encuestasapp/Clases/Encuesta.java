@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 public class Encuesta {
-    private List<String> respuestas = new ArrayList<>();
+    private String[] respuestas = new String[5];
     private String municipio;
     private String seccion;
     private String curp;
@@ -17,17 +17,32 @@ public class Encuesta {
     private Date fechaCaptura;
     private Date fechaSubida;
 
+    public static Encuesta encuestaNueva;
     /*
 
     Obtener Geolocalizacion
 
      */
 
-    public List<String> getRespuestas() {
+    public Encuesta(){
+
+    }
+
+    public static Encuesta getEncuestaNueva() {
+        return encuestaNueva;
+    }
+
+    public static void setEncuestaNueva(Encuesta nuevaEncuesta){encuestaNueva = nuevaEncuesta;}
+
+    public static void cleanEncuestaNueva() {
+        encuestaNueva = null;
+    }
+
+    public String[] getRespuestas() {
         return respuestas;
     }
 
-    public void setRespuestas(List<String> respuestas) {
+    public void setRespuestas(String[] respuestas) {
         this.respuestas = respuestas;
     }
 

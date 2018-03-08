@@ -1,6 +1,7 @@
 package com.sulus.encuestasapp.Vistas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,27 +14,25 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sulus.encuestasapp.Clases.Encuesta;
 import com.sulus.encuestasapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link SelectionFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link SelectionFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+
+
 public class SelectionFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "pregunta";
     private static final String ARG_PARAM2 = "indice";
 
-    Button A_enter;
+    Button A_enter, btnFinalizar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private Integer mParam2;
+
+    private Encuesta actual =Encuesta.getEncuestaNueva();
+
 
     String respuesta;
 
@@ -76,8 +75,12 @@ public class SelectionFragment extends Fragment {
         TextView tvLabel = (TextView) myFragmentView.findViewById(R.id.pregunta);
         tvLabel.setText(mParam2 + " - " + mParam1);
         A_enter = (Button) myFragmentView.findViewById(R.id.siguiente);
+        btnFinalizar = (Button) myFragmentView.findViewById(R.id.finalizar);
         A_enter.setOnClickListener(A_enterOnClickListener);
+        btnFinalizar.setOnClickListener(btn_enterOnClickListener);
+
         RadioGroup radioGroup = (RadioGroup) myFragmentView.findViewById(R.id.preguntasSele);
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // checkedId is the RadioButton selected
@@ -94,6 +97,8 @@ public class SelectionFragment extends Fragment {
                         respuesta = "2";
                         break;
                 }
+
+
             }
         });
 
@@ -108,21 +113,58 @@ public class SelectionFragment extends Fragment {
         public void onClick(View arg0) {
 
             String textPassToB = respuesta;
-
-            String TabOfFragmentB = ((EncuestasView) getActivity()).getTabFragmentB(mParam2);
+            /*
+            String TabOfFragmentB = ((EncuestasView) getActivity()).getTabFragmentRespuestas();
 
             RespuestasFragment fragmentB = (RespuestasFragment) getActivity()
                     .getSupportFragmentManager()
                     .findFragmentByTag(TabOfFragmentB);
 
-            fragmentB.b_updateText(mParam2, respuesta);
 
+            fragmentB.actualizarRespuesta(mParam2-1, textPassToB);
+            */
+            String[] respuestas = actual.getRespuestas();
+            respuestas[mParam2-1]=textPassToB;
+            Encuesta.getEncuestaNueva().setRespuestas(respuestas);
+            /*
             Toast.makeText(getActivity(),
                     "text sent to Fragment B:\n " + TabOfFragmentB,
                     Toast.LENGTH_LONG).show();
+                    */
             ((EncuestasView) getActivity()).siguientePregunta();
         }
     };
 
+
+    View.OnClickListener btn_enterOnClickListener
+            = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View arg0) {
+            String[] respuestas = actual.getRespuestas();
+            boolean bandera = true;
+            for(int i = 0; i < respuestas.length ;i++){
+                if(respuestas[i] == null){
+                    bandera = false;
+                    break;
+                }
+            }
+
+
+            if(bandera) {
+                Toast.makeText(getActivity(),
+                        "Finalizar encuesta",
+                        Toast.LENGTH_LONG).show();
+
+                /*GUARDAR ENCUESTA Y SALIR*/
+                Intent home = new Intent(getActivity(), ActividadControl.class);
+
+                home.addCategory(Intent.CATEGORY_HOME);
+                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
+
+            }
+        }
+    };
 
 }

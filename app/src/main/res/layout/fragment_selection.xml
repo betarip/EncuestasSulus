@@ -1,7 +1,10 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/espacio_grid"
     tools:context="com.sulus.encuestasapp.Vistas.SelectionFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,7 +15,7 @@
         android:layout_centerInParent="true"
         android:text="1"
         android:textStyle="bold"
-        android:textSize="40dp" />
+        android:textSize="32dp" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -40,13 +43,33 @@
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/sad" />
     </RadioGroup>
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/siguiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Siguiente"
+        <Button
+            android:id="@+id/siguiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Siguiente"
+            android:layout_alignParentLeft="true"
 
-        />
+            />
 
-</FrameLayout>
+        <Button
+            android:id="@+id/finalizar"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Finalizar"
+
+            />
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

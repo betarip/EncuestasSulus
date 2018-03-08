@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 
 public class TabsPagerAdapter extends FragmentPagerAdapter {
-    private int NUM_ITEMS = 6;
+    private int NUM_ITEMS = 5;
 
 
     public TabsPagerAdapter(FragmentManager fm) {
@@ -27,7 +27,8 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return FirstFragment.newInstance(0, "Pregunta # 1");
+                return SelectionFragment.newInstance("¿Pregunta                        " +
+                        "nueva porpe que es larga ye es la de prueba?", 1);
             case 1:
                 return SelectionFragment.newInstance("¿Pregunta                        " +
                         "nueva porpe que es larga ye es la de prueba?", 2);
@@ -40,8 +41,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             case 4:
                 return SelectionFragment.newInstance("¿Pregunta                        " +
                         "nueva porpe que es larga ye es la de prueba?", 5);
-            case 5:
-                return new RespuestasFragment();
+
             default:
                 return null;
         }
@@ -50,6 +50,10 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     // Returns the page title for the top indicator
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Pregunta " + position;
+        if(position != 5)
+            return "Pregunta " + (position+1);
+        else{
+            return "Respuesta";
+        }
     }
 }

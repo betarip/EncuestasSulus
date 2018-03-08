@@ -13,14 +13,14 @@ public class EncuestasView extends AppCompatActivity {
     private ViewPager viewPager;
     TabsPagerAdapter myAdapter;
 
-    String[] TabFragmentB = new String[5];
+    String TabFragmentRespuestas;
 
-    public void setTabFragmentB(int index, String t) {
-        TabFragmentB[0] = t;
+    public void setTabFragmentRespuestas(String t) {
+        TabFragmentRespuestas = t;
     }
 
-    public String getTabFragmentB(int index) {
-        return TabFragmentB[index];
+    public String getTabFragmentRespuestas() {
+        return TabFragmentRespuestas;
     }
 
     @Override
@@ -29,6 +29,7 @@ public class EncuestasView extends AppCompatActivity {
         setContentView(R.layout.activity_encuestas_view);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         myAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+
         viewPager.setAdapter(myAdapter);
     }
 

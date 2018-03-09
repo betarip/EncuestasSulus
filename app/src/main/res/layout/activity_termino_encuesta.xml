@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootview"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sulus.encuestasapp.Vistas.TerminoEncuesta"
+    android:padding="@dimen/espacio_grid">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/check"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@null"
+
+            android:scaleType="fitXY"
+            android:src="@drawable/animated_vector_check"
+            android:layout_alignParentLeft="true" />
+
+        <Button
+            android:onClick="regresoPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finalizar Encuesta"
+
+            android:layout_alignBottom="@id/check" />
+
+    </RelativeLayout>
+</RelativeLayout>

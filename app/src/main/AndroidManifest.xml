@@ -32,7 +32,11 @@
         <activity
             android:name=".Vistas.ActividadInicioEncuesta"
             android:screenOrientation="portrait" />
-        <activity android:name=".Vistas.EncuestasView"></activity>
+        <activity android:name=".Vistas.EncuestasView" />
+        <activity
+            android:name=".Vistas.TerminoEncuesta"
+            android:label="@string/title_activity_termino_encuesta"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

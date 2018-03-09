@@ -157,12 +157,20 @@ public class SelectionFragment extends Fragment {
                         Toast.LENGTH_LONG).show();
 
                 /*GUARDAR ENCUESTA Y SALIR*/
-                Intent home = new Intent(getActivity(), ActividadControl.class);
+
+                Intent home = new Intent(getActivity(), TerminoEncuesta.class);
 
                 home.addCategory(Intent.CATEGORY_HOME);
                 home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(home);
 
+                /*
+                Intent home = new Intent(getActivity(), ActividadControl.class);
+
+                home.addCategory(Intent.CATEGORY_HOME);
+                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
+                */
             }
         }
     };

@@ -6,7 +6,7 @@
     android:theme="@style/AppTheme"
     tools:context="com.sulus.encuestasapp.Vistas.EncuestasView">
 
-    <android.support.v4.view.ViewPager
+    <com.sulus.encuestasapp.Clases.NonSwipeableViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,5 +19,5 @@
             android:paddingBottom="8dp"
             android:paddingTop="8dp" />
 
-    </android.support.v4.view.ViewPager>
+    </com.sulus.encuestasapp.Clases.NonSwipeableViewPager>
 </RelativeLayout>

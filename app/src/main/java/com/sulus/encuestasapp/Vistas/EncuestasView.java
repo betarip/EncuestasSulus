@@ -28,9 +28,10 @@ public class EncuestasView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_encuestas_view);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        myAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        myAdapter = new TabsPagerAdapter(getSupportFragmentManager(), getApplicationContext());
 
         viewPager.setAdapter(myAdapter);
+
     }
 
     public void onRadioButtonClicked(View view) {

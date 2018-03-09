@@ -9,6 +9,8 @@ public class Encuestador {
     private String id;
     private String pass;
 
+
+
     public String getId() {
         return id;
     }

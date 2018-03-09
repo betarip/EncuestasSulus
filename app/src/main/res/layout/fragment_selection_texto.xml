@@ -24,25 +24,43 @@
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/radio_feliz"
+            android:id="@+id/radio_res1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Respuesta 1"
 
-
-            android:drawableRight="@drawable/smile" />
+             />
 
         <RadioButton
-            android:id="@+id/radio_neutro"
+            android:id="@+id/radio_res2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/neutral" />
+            android:text="Respuesta 2" />
 
         <RadioButton
-            android:id="@+id/radio_enojado"
+            android:id="@+id/radio_res3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableRight="@drawable/sad" />
+     />
     </RadioGroup>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edit_respue_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/preguntasSele"
+        android:layout_toRightOf="@id/radio_res3"
+        android:hint="Usuario">
+
+        <EditText
+            android:id="@+id/edit_respue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
+            />
+
+    </android.support.design.widget.TextInputLayout>
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

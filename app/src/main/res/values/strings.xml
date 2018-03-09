@@ -18,4 +18,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_termino_encuesta">TerminoEncuesta</string>
+
+
+    <!-- TODO: Valores de preguntas -->
+    <string name="pregunta2">¿El apoyo que le otorga el Gobierno Federal contribuyen a mejorar su ingreso familiar?</string>
+    <string name="pregunta3">¿Qué tan satisfecho está con los apoyos sociales?</string>
+    <string name="pregunta4">¿Qué calificación le daría al Gobierno Federal?</string>
+    <string name="pregunta5">Además de los apoyos que ya recibes ¿te gustaría pedirle al Gobierno un apoyo adicional que necesites, cómo:</string>
+    <string name="pregunta1">¿El apoyo que recibe le hace sentir que su Gobierno Federal le esta cumpliendo?</string>
+    <string name="respuesta1">Beca</string>
+    <string name="respuesta2">Crédito</string>
 </resources>

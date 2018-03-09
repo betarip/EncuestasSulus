@@ -39,7 +39,7 @@ public class TerminoEncuesta extends AppCompatActivity {
     }
 
     public void regresoPanel(View view) {
-        Intent home = new Intent(this, TerminoEncuesta.class);
+        Intent home = new Intent(this, ActividadControl.class);
 
         home.addCategory(Intent.CATEGORY_HOME);
         home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

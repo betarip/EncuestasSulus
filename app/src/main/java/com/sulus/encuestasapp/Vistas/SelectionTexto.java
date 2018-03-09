@@ -1,16 +1,14 @@
 package com.sulus.encuestasapp.Vistas;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RadioButton;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,15 +16,16 @@ import android.widget.Toast;
 import com.sulus.encuestasapp.Clases.Encuesta;
 import com.sulus.encuestasapp.R;
 
-import java.util.List;
-
-
-public class SelectionFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class SelectionTexto extends Fragment {
 
     private static final String ARG_PARAM1 = "pregunta";
     private static final String ARG_PARAM2 = "indice";
 
-    Button A_enter, btnFinalizar;
+    Button  btnFinalizar;
+    EditText edtRespuesta;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -34,24 +33,15 @@ public class SelectionFragment extends Fragment {
 
     private Encuesta actual =Encuesta.getEncuestaNueva();
 
-
     String respuesta;
 
-    public SelectionFragment() {
+
+    public SelectionTexto() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SelectionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SelectionFragment newInstance(String param1, Integer param2) {
-        SelectionFragment fragment = new SelectionFragment();
+    public static SelectionTexto newInstance(String param1, Integer param2) {
+        SelectionTexto fragment = new SelectionTexto();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putInt(ARG_PARAM2, param2);
@@ -71,15 +61,14 @@ public class SelectionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View myFragmentView = inflater.inflate(R.layout.fragment_selection, container, false);
+        View myFragmentView = inflater.inflate(R.layout.fragment_selection_texto, container, false);
         TextView tvLabel = (TextView) myFragmentView.findViewById(R.id.pregunta);
         tvLabel.setText(mParam2 + " - " + mParam1);
-        /*
-        A_enter = (Button) myFragmentView.findViewById(R.id.siguiente);
+
         btnFinalizar = (Button) myFragmentView.findViewById(R.id.finalizar);
         btnFinalizar.setOnClickListener(btn_enterOnClickListener);
-*/
+
+        edtRespuesta = (EditText) myFragmentView.findViewById(R.id.edit_respue);
         RadioGroup radioGroup = (RadioGroup) myFragmentView.findViewById(R.id.preguntasSele);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -88,14 +77,14 @@ public class SelectionFragment extends Fragment {
 
 
                 switch (checkedId) {
-                    case R.id.radio_neutro:
+                    case R.id.radio_res1:
                         respuesta = "1";
                         break;
-                    case R.id.radio_feliz:
+                    case R.id.radio_res2:
                         respuesta = "0";
                         break;
-                    case R.id.radio_enojado:
-                        respuesta = "2";
+                    case R.id.radio_res3:
+                        respuesta = edtRespuesta.getText().toString();
                         break;
                 }
 
@@ -111,9 +100,7 @@ public class SelectionFragment extends Fragment {
         });
 
         return myFragmentView;
-
     }
-
 
 
     View.OnClickListener btn_enterOnClickListener
@@ -151,8 +138,11 @@ public class SelectionFragment extends Fragment {
                 home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(home);
                 */
+            }else{
+                Toast.makeText(getActivity(),
+                        "Faltan responder algunas preguntas",
+                        Toast.LENGTH_LONG).show();
             }
         }
     };
-
 }

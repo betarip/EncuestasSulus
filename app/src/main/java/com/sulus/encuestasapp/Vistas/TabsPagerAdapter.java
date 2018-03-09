@@ -1,19 +1,26 @@
 package com.sulus.encuestasapp.Vistas;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.sulus.encuestasapp.R;
 
 /**
  * Created by ivan on 07/03/2018.
  */
 
-public class TabsPagerAdapter extends FragmentPagerAdapter {
+public class TabsPagerAdapter extends FragmentStatePagerAdapter {
     private int NUM_ITEMS = 5;
+    private Context _context;
 
 
-    public TabsPagerAdapter(FragmentManager fm) {
+
+    public TabsPagerAdapter(FragmentManager fm, Context c) {
         super(fm);
+        _context = c;
     }
 
     // Returns total number of pages
@@ -27,20 +34,15 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return SelectionFragment.newInstance("¿Pregunta                        " +
-                        "nueva porpe que es larga ye es la de prueba?", 1);
+                return SelectionFragment.newInstance(_context.getResources().getString(R.string.pregunta1), 1);
             case 1:
-                return SelectionFragment.newInstance("¿Pregunta                        " +
-                        "nueva porpe que es larga ye es la de prueba?", 2);
+                return SelectionFragment.newInstance(_context.getResources().getString(R.string.pregunta2), 2);
             case 2:
-                return SelectionFragment.newInstance("¿Pregunta                        " +
-                        "nueva porpe que es larga ye es la de prueba?", 3);
+                return SelectionFragment.newInstance(_context.getResources().getString(R.string.pregunta3), 3);
             case 3:
-                return SelectionFragment.newInstance("¿Pregunta                        " +
-                        "nueva porpe que es larga ye es la de prueba?", 4);
+                return SelectionFragment.newInstance(_context.getResources().getString(R.string.pregunta4), 4);
             case 4:
-                return SelectionFragment.newInstance("¿Pregunta                        " +
-                        "nueva porpe que es larga ye es la de prueba?", 5);
+                return SelectionTexto.newInstance(_context.getResources().getString(R.string.pregunta5), 5);
 
             default:
                 return null;
@@ -56,4 +58,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             return "Respuesta";
         }
     }
+
+
 }

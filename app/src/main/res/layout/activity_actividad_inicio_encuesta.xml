@@ -14,35 +14,18 @@
         android:orientation="vertical"
         android:padding="@dimen/espacio_grid">
 
+        <Spinner
+            android:id="@+id/municipio_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_muni_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Municipio">
-
-            <EditText
-                android:id="@+id/edit_muni"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
+        <Spinner
+            android:id="@+id/seccion_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_sec_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Sección">
 
-            <EditText
-                android:id="@+id/edit_sec"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
 
 
         <android.support.design.widget.TextInputLayout
@@ -58,6 +41,35 @@
                 android:inputType="text"
                 android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edit_app1_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre">
+
+            <EditText
+                android:id="@+id/edit_app1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edit_app2_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre">
+
+            <EditText
+                android:id="@+id/edit_app2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

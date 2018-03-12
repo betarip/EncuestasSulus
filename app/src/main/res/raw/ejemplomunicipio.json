@@ -1,0 +1,31 @@
+{
+  "municipios":
+    [
+      {
+        "identificador":1,
+        "municipio":"Municipio 1",
+        "seccion":[
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "identificador":2,
+        "municipio":"Municipio 2",
+        "seccion":[
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      },
+
+    ]
+
+
+
+}

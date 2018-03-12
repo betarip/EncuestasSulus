@@ -1,6 +1,8 @@
 package com.sulus.encuestasapp.Vistas;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -19,8 +21,18 @@ public class Splash extends AppCompatActivity {
         int secondsDelayed = 1;
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                Intent i = new Intent(Splash.this,
-                        com.sulus.encuestasapp.Vistas.MainActivity.class);
+                Intent i;
+                SharedPreferences pref = getSharedPreferences("Encuestador", Context.MODE_PRIVATE);
+                if (pref.contains("usuario") && pref.contains("pass")) {
+                    i = new Intent(Splash.this,
+                            com.sulus.encuestasapp.Vistas.ActividadControl.class);
+                } else {
+                    i = new Intent(Splash.this,
+                            com.sulus.encuestasapp.Vistas.MainActivity.class);
+                }
+
+
+
 
                 startActivity(i);
                 finish();

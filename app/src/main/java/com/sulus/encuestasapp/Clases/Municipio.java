@@ -1,46 +1,51 @@
 package com.sulus.encuestasapp.Clases;
 
 import android.content.Context;
-import android.content.res.Resources;
 
 import com.sulus.encuestasapp.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 /**
- * Created by betaripv on 11/03/18.
+ * Created by ivan on 12/03/2018.
  */
 
 public class Municipio {
-    private Integer id;
+
+    private int id ;
     private String nombre;
     private ArrayList<Integer> secciones;
 
-    private static ArrayList<Municipio> listaDeMunicipios;
+    public static ArrayList<Municipio> municipios;
 
-    Municipio(Integer id, String nombre, ArrayList<Integer> secciones) {
+    static {
+        municipios = new ArrayList<>();
+
+
+    }
+
+    public Municipio(int id, String nombre, ArrayList<Integer> secciones) {
         this.id = id;
         this.nombre = nombre;
         this.secciones = secciones;
     }
 
-    Municipio() {
-        this.id = 0;
-        this.nombre = "";
-        this.secciones = new ArrayList<>();
+    public Municipio() {
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -60,25 +65,54 @@ public class Municipio {
         this.secciones = secciones;
     }
 
-    public void llenarListaDeMunicipios(Context current) {
-        Resources res = current.getResources();
-        InputStream is = res.openRawResource(R.raw.municipios);
+    public static ArrayList<Municipio> getMunicipios() {
+        return municipios;
+    }
 
-        Scanner scanner = new Scanner(is);
-
-        StringBuilder builder = new StringBuilder();
-
-        while (scanner.hasNextLine()) {
-            builder.append(scanner.nextLine());
-        }
-
-        JSONObject reader = null;
-
+    public static void obtenerMunicipios(Context contexto){
+        InputStream inputStream= contexto.getResources().openRawResource(R.raw.ejemplomunicipio);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
         try {
-            reader = new JSONObject(builder.toString());
+            line = reader.readLine();
+            sb.append(line);
+            while (line != null) {
+                line = reader.readLine();
+                sb.append(line);
+            }
+            JSONObject jsonObject = new JSONObject(sb.toString());
+            JSONArray jsonMunicipios = jsonObject.getJSONArray("municipios");
+            Municipio mun = new Municipio();
+            for(int i=0; i<jsonMunicipios.length(); i++){
+                JSONObject jsonMun = jsonMunicipios.getJSONObject(i);
+                mun.setId(jsonMun.getInt("identificador"));
+                mun.setNombre(jsonMun.getString("municipio"));
+                JSONArray jsonSecciones = jsonMun.getJSONArray("secciones");
+                ArrayList<Integer> listSecciones = new ArrayList<>();
+                for (int j = 0 ; j < jsonSecciones.length(); j++){
+                    listSecciones.set(j,jsonSecciones.getInt(j));
+                }
+                mun.setSecciones(listSecciones);
+                municipios.add(mun);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+
+    }
+
+
+    public static void setMunicipios(ArrayList<Municipio> municipios) {
+        Municipio.municipios = municipios;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 }

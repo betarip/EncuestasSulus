@@ -14,6 +14,8 @@ public class Encuesta {
     private String seccion;
     private String curp;
     private String nombre;
+    private String app1;
+    private String app2;
     private Date fechaCaptura;
     private Date fechaSubida;
 
@@ -76,6 +78,22 @@ public class Encuesta {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApp1() {
+        return app1;
+    }
+
+    public void setApp1(String app1) {
+        this.app1 = app1;
+    }
+
+    public String getApp2() {
+        return app2;
+    }
+
+    public void setApp2(String app2) {
+        this.app2 = app2;
     }
 
     public Date getFechaCaptura() {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,15 +28,49 @@ public class SelectionFragment extends Fragment {
     private static final String ARG_PARAM2 = "indice";
 
     Button A_enter, btnFinalizar;
-
+    String respuesta;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private Integer mParam2;
-
     private Encuesta actual =Encuesta.getEncuestaNueva();
+    View.OnClickListener btn_enterOnClickListener
+            = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View arg0) {
+            String[] respuestas = actual.getRespuestas();
+            boolean bandera = true;
+            for (int i = 0; i < respuestas.length; i++) {
+                if (respuestas[i] == null) {
+                    bandera = false;
+                    break;
+                }
+            }
 
 
-    String respuesta;
+            if (bandera) {
+                Toast.makeText(getActivity(),
+                        "Finalizar encuesta",
+                        Toast.LENGTH_LONG).show();
+
+                /*GUARDAR ENCUESTA Y SALIR*/
+
+                Intent home = new Intent(getActivity(), TerminoEncuesta.class);
+
+                home.addCategory(Intent.CATEGORY_HOME);
+                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
+
+                /*
+                Intent home = new Intent(getActivity(), ActividadControl.class);
+
+                home.addCategory(Intent.CATEGORY_HOME);
+                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(home);
+                */
+            }
+        }
+    };
 
     public SelectionFragment() {
         // Required empty public constructor
@@ -103,9 +138,13 @@ public class SelectionFragment extends Fragment {
                 String[] respuestas = actual.getRespuestas();
                 respuestas[mParam2-1]=textPassToB;
                 Encuesta.getEncuestaNueva().setRespuestas(respuestas);
+                int secondsDelayed = 1;
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
 
-                ((EncuestasView) getActivity()).siguientePregunta();
-
+                        ((EncuestasView) getActivity()).siguientePregunta();
+                    }
+                }, secondsDelayed * 300);
 
             }
         });
@@ -113,46 +152,5 @@ public class SelectionFragment extends Fragment {
         return myFragmentView;
 
     }
-
-
-
-    View.OnClickListener btn_enterOnClickListener
-            = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View arg0) {
-            String[] respuestas = actual.getRespuestas();
-            boolean bandera = true;
-            for(int i = 0; i < respuestas.length ;i++){
-                if(respuestas[i] == null){
-                    bandera = false;
-                    break;
-                }
-            }
-
-
-            if(bandera) {
-                Toast.makeText(getActivity(),
-                        "Finalizar encuesta",
-                        Toast.LENGTH_LONG).show();
-
-                /*GUARDAR ENCUESTA Y SALIR*/
-
-                Intent home = new Intent(getActivity(), TerminoEncuesta.class);
-
-                home.addCategory(Intent.CATEGORY_HOME);
-                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(home);
-
-                /*
-                Intent home = new Intent(getActivity(), ActividadControl.class);
-
-                home.addCategory(Intent.CATEGORY_HOME);
-                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(home);
-                */
-            }
-        }
-    };
 
 }

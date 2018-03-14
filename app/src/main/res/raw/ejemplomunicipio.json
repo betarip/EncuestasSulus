@@ -2,7 +2,7 @@
   "municipios":
     [
       {
-        "identificador":1,
+        "indice": 1,
         "municipio":"Municipio 1",
         "seccion":[
           2,
@@ -11,7 +11,7 @@
         ]
       },
       {
-        "identificador":2,
+        "indice": 2,
         "municipio":"Municipio 2",
         "seccion":[
           8,

@@ -20,10 +20,6 @@ import java.util.ArrayList;
 
 public class Municipio {
 
-    private int id ;
-    private String nombre;
-    private ArrayList<Integer> secciones;
-
     public static ArrayList<Municipio> municipios;
 
     static {
@@ -32,13 +28,87 @@ public class Municipio {
 
     }
 
+    private int id;
+    private String nombre;
+    private ArrayList<Integer> secciones;
+
     public Municipio(int id, String nombre, ArrayList<Integer> secciones) {
         this.id = id;
         this.nombre = nombre;
         this.secciones = secciones;
     }
 
+    public Municipio(Municipio municipio) {
+        this.id = municipio.getId();
+        this.nombre = new String(municipio.getNombre());
+        this.secciones = new ArrayList<>();
+        for (int i = 0; i < municipio.getSecciones().size(); i++) {
+            this.secciones.add(municipio.getSecciones().get(i));
+        }
+    }
+
     public Municipio() {
+    }
+
+    public static ArrayList<Municipio> getMunicipios() {
+        return municipios;
+    }
+
+    public static void setMunicipios(ArrayList<Municipio> municipios) {
+        Municipio.municipios = municipios;
+    }
+
+    public static  ArrayList<Municipio> jsonToMunicipios(InputStream is){
+        ArrayList<Municipio> municipiosLista = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+        String line = null;
+        try {
+            line = reader.readLine();
+            sb.append(line);
+            while (line != null) {
+                line = reader.readLine();
+                sb.append(line);
+            }
+            JSONObject jsonObject = new JSONObject(sb.toString());
+            JSONArray jsonMunicipios = jsonObject.getJSONArray("municipios");
+
+            for(int i=0; i<jsonMunicipios.length(); i++){
+                Municipio mun = new Municipio();
+                JSONObject jsonMun = jsonMunicipios.getJSONObject(i);
+                mun.setId(jsonMun.getInt("indice"));
+                mun.setNombre(jsonMun.getString("municipio"));
+                JSONArray jsonSecciones = jsonMun.getJSONArray("secciones");
+                ArrayList<Integer> listSecciones = new ArrayList<>();
+                for (int j = 0 ; j < jsonSecciones.length(); j++){
+                    listSecciones.add(jsonSecciones.getInt(j));
+
+                }
+                mun.setSecciones(listSecciones);
+                municipiosLista.add(mun);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return municipiosLista;
+    }
+
+    public static Municipio getPorNombre(String nombre, ArrayList<Municipio> listaMunicipios) {
+        Municipio encontrado = null;
+        for (Municipio m : listaMunicipios) {
+            if (m.getNombre().equals(nombre)) {
+
+                encontrado = new Municipio(m);
+                break;
+
+            }
+        }
+        return encontrado;
+
     }
 
     public int getId() {
@@ -65,51 +135,8 @@ public class Municipio {
         this.secciones = secciones;
     }
 
-    public static ArrayList<Municipio> getMunicipios() {
-        return municipios;
-    }
-
-    public static  ArrayList<Municipio> jsonToMunicipios(InputStream is){
-        ArrayList<Municipio> municipiosLista = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
-        String line = null;
-        try {
-            line = reader.readLine();
-            sb.append(line);
-            while (line != null) {
-                line = reader.readLine();
-                sb.append(line);
-            }
-            JSONObject jsonObject = new JSONObject(sb.toString());
-            JSONArray jsonMunicipios = jsonObject.getJSONArray("municipios");
-
-            for(int i=0; i<jsonMunicipios.length(); i++){
-                Municipio mun = new Municipio();
-                JSONObject jsonMun = jsonMunicipios.getJSONObject(i);
-                mun.setId(jsonMun.getInt("identificador"));
-                mun.setNombre(jsonMun.getString("municipio"));
-                JSONArray jsonSecciones = jsonMun.getJSONArray("seccion");
-                ArrayList<Integer> listSecciones = new ArrayList<>();
-                for (int j = 0 ; j < jsonSecciones.length(); j++){
-                    listSecciones.add(jsonSecciones.getInt(j));
-
-                }
-                mun.setSecciones(listSecciones);
-                municipiosLista.add(mun);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return municipiosLista;
-    }
-
     public  void obtenerMunicipios(Context contexto){
-        InputStream inputStream= contexto.getResources().openRawResource(R.raw.ejemplomunicipio);
+        InputStream inputStream = contexto.getResources().openRawResource(R.raw.municipios);
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         StringBuilder sb = new StringBuilder();
         String line = null;
@@ -126,7 +153,7 @@ public class Municipio {
             for(int i=0; i<jsonMunicipios.length(); i++){
                 Municipio mun = new Municipio();
                 JSONObject jsonMun = jsonMunicipios.getJSONObject(i);
-                mun.setId(jsonMun.getInt("identificador"));
+                mun.setId(jsonMun.getInt("indice"));
                 mun.setNombre(jsonMun.getString("municipio"));
                 JSONArray jsonSecciones = jsonMun.getJSONArray("seccion");
                 ArrayList<Integer> listSecciones = new ArrayList<>();
@@ -145,26 +172,6 @@ public class Municipio {
         }
 
 
-    }
-
-    public static Municipio getPorNombre(String nombre, ArrayList<Municipio> listaMunicipios){
-        Municipio encontrado = null;
-        for(Municipio m: listaMunicipios){
-            if(m.getNombre().equals(nombre)){
-                try {
-                    encontrado = (Municipio) m.clone();
-                    break;
-                } catch (CloneNotSupportedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return encontrado;
-
-    }
-
-    public static void setMunicipios(ArrayList<Municipio> municipios) {
-        Municipio.municipios = municipios;
     }
 
     @Override

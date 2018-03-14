@@ -33,44 +33,7 @@ public class SelectionFragment extends Fragment {
     private String mParam1;
     private Integer mParam2;
     private Encuesta actual =Encuesta.getEncuestaNueva();
-    View.OnClickListener btn_enterOnClickListener
-            = new View.OnClickListener() {
 
-        @Override
-        public void onClick(View arg0) {
-            String[] respuestas = actual.getRespuestas();
-            boolean bandera = true;
-            for (int i = 0; i < respuestas.length; i++) {
-                if (respuestas[i] == null) {
-                    bandera = false;
-                    break;
-                }
-            }
-
-
-            if (bandera) {
-                Toast.makeText(getActivity(),
-                        "Finalizar encuesta",
-                        Toast.LENGTH_LONG).show();
-
-                /*GUARDAR ENCUESTA Y SALIR*/
-
-                Intent home = new Intent(getActivity(), TerminoEncuesta.class);
-
-                home.addCategory(Intent.CATEGORY_HOME);
-                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(home);
-
-                /*
-                Intent home = new Intent(getActivity(), ActividadControl.class);
-
-                home.addCategory(Intent.CATEGORY_HOME);
-                home.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(home);
-                */
-            }
-        }
-    };
 
     public SelectionFragment() {
         // Required empty public constructor

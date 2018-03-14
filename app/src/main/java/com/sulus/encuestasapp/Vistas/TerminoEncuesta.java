@@ -39,6 +39,10 @@ public class TerminoEncuesta extends AppCompatActivity {
     }
 
     public void regresoPanel(View view) {
+        /*
+        * Guardar informacion en el SQLite
+        * */
+
         Intent home = new Intent(this, ActividadControl.class);
 
         home.addCategory(Intent.CATEGORY_HOME);

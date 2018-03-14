@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="1"
-        android:textSize="32dp"
+        android:textSize="26dp"
         android:textStyle="bold" />
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,25 +43,7 @@
             android:layout_height="wrap_content"
             android:drawableRight="@drawable/angry" />
     </RadioGroup>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-
-
-        <Button
-            android:id="@+id/finalizar"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Finalizar"
-
-            />
-
-
-    </RelativeLayout>
 
 
 

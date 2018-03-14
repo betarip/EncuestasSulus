@@ -23,11 +23,11 @@ import java.util.List;
 
 public class ActividadInicioEncuesta extends AppCompatActivity {
 
-    EditText edtApp1, edtApp2, edtNombre;
+    EditText edtApp1, edtApp2, edtNombre, edtId;
     Spinner spMunicipio, spSeccion;
     ArrayList<Municipio> listaMunicipios;
 
-    private TextInputLayout tilNombre, tilApp1, tilApp2;
+    private TextInputLayout tilNombre, tilApp1, tilApp2, tilId;
 
 
     @Override
@@ -35,9 +35,10 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_inicio_encuesta);
         edtApp1 = (EditText) findViewById(R.id.edit_app1);
-
         edtApp2 = (EditText) findViewById(R.id.edit_app2);
         edtNombre = (EditText) findViewById(R.id.edit_nombre);
+        edtId = (EditText) findViewById(R.id.edit_id);
+
         edtNombre.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         edtApp1.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         edtApp2.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
@@ -45,6 +46,9 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
         tilNombre = (TextInputLayout) findViewById(R.id.edit_nombre_layout);
         tilApp1 = (TextInputLayout) findViewById(R.id.edit_app1_layout);
         tilApp2 = (TextInputLayout) findViewById(R.id.edit_app2_layout);
+        tilId = (TextInputLayout) findViewById(R.id.edit_id_layout);
+
+
 
 
 
@@ -108,11 +112,11 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
         * Validar Datos de la encuesta
         *
         * */
-        if (nombreValido() && app1Valido() && app2Valido()) {
+        if (idValido() && nombreValido() && app1Valido() && app2Valido() ) {
             Encuesta nueva = new Encuesta();
             //nueva.setMunicipio(edtMunicipio.getText().toString());
             //nueva.setSeccion(edtSeccion.getText().toString());
-
+            nueva.setIdentificador(Integer.parseInt(edtId.getText().toString()));
             nueva.setNombre(edtNombre.getText().toString().replace("Ñ", "N"));
             nueva.setApp1(edtNombre.getText().toString().replace("Ñ", "N"));
             nueva.setApp2(edtNombre.getText().toString().replace("Ñ", "N"));
@@ -165,6 +169,19 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
             String mensaje = "Se requiere campo";
             tilApp2.setErrorEnabled(true);
             tilApp2.setError(mensaje);
+            return false;
+        }
+    }
+
+    private boolean idValido() {
+        String cadena = edtId.getText().toString();
+        if (!cadena.equals("")) {
+            tilId.setErrorEnabled(false);
+            return true;
+        } else {
+            String mensaje = "Se requiere ID válido";
+            tilId.setErrorEnabled(true);
+            tilId.setError(mensaje);
             return false;
         }
     }

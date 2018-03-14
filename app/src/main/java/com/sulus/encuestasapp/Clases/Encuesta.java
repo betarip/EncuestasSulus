@@ -16,6 +16,7 @@ public class Encuesta {
     private String nombre;
     private String app1;
     private String app2;
+    private int identificador;
     private Date fechaCaptura;
     private Date fechaSubida;
 
@@ -25,6 +26,8 @@ public class Encuesta {
     Obtener Geolocalizacion
 
      */
+
+    private double lat, longi;
 
     public Encuesta(){
 
@@ -84,6 +87,14 @@ public class Encuesta {
         return app1;
     }
 
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
+
     public void setApp1(String app1) {
         this.app1 = app1;
     }
@@ -110,5 +121,21 @@ public class Encuesta {
 
     public void setFechaSubida(Date fechaSubida) {
         this.fechaSubida = fechaSubida;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLongi() {
+        return longi;
+    }
+
+    public void setLongi(double longi) {
+        this.longi = longi;
     }
 }

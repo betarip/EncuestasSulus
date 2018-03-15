@@ -18,7 +18,7 @@
             android:id="@+id/edit_id_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre">
+            android:hint="Identificador del usuario">
 
             <EditText
                 android:id="@+id/edit_id"
@@ -28,6 +28,7 @@
 
 
                 android:maxLines="1" />
+
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
@@ -43,22 +44,6 @@
 
 
 
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_nombre_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Nombre">
-
-            <EditText
-                android:id="@+id/edit_nombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-
-
-                android:maxLines="1" />
-        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/edit_app1_layout"
@@ -90,6 +75,56 @@
                 android:maxLines="1"
 
                 android:textAllCaps="true" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edit_nombre_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre">
+
+            <EditText
+                android:id="@+id/edit_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+
+
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edit_telefono_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefono">
+
+            <EditText
+                android:id="@+id/edit_telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+
+
+                android:maxLines="1" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edit_correo_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Correo">
+
+            <EditText
+                android:id="@+id/edit_correo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+
+
+                android:maxLines="1" />
         </android.support.design.widget.TextInputLayout>
 
 

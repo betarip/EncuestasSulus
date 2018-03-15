@@ -23,11 +23,11 @@ import java.util.List;
 
 public class ActividadInicioEncuesta extends AppCompatActivity {
 
-    EditText edtApp1, edtApp2, edtNombre, edtId;
+    EditText edtApp1, edtApp2, edtNombre, edtId, edtTelefono, edtCorreo;
     Spinner spMunicipio, spSeccion;
     ArrayList<Municipio> listaMunicipios;
 
-    private TextInputLayout tilNombre, tilApp1, tilApp2, tilId;
+    private TextInputLayout tilNombre, tilApp1, tilApp2, tilId, tilTelefono, tilCorreo;
 
 
     @Override
@@ -38,6 +38,8 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
         edtApp2 = (EditText) findViewById(R.id.edit_app2);
         edtNombre = (EditText) findViewById(R.id.edit_nombre);
         edtId = (EditText) findViewById(R.id.edit_id);
+        edtTelefono = (EditText) findViewById(R.id.edit_telefono);
+        edtCorreo = (EditText) findViewById(R.id.edit_correo);
 
         edtNombre.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
         edtApp1.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
@@ -47,6 +49,8 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
         tilApp1 = (TextInputLayout) findViewById(R.id.edit_app1_layout);
         tilApp2 = (TextInputLayout) findViewById(R.id.edit_app2_layout);
         tilId = (TextInputLayout) findViewById(R.id.edit_id_layout);
+        tilTelefono = (TextInputLayout) findViewById(R.id.edit_telefono_layout);
+        tilCorreo = (TextInputLayout) findViewById(R.id.edit_correo_layout);
 
 
 
@@ -122,9 +126,19 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
             nueva.setApp2(edtNombre.getText().toString().replace("Ñ", "N"));
             nueva.setMunicipio(String.valueOf(spMunicipio.getSelectedItem()));
             nueva.setSeccion(String.valueOf(spSeccion.getSelectedItem()));
+            nueva.setCorreo(edtCorreo.getText().toString());
+            nueva.setTelfono(edtTelefono.getText().toString());
             Encuesta.setEncuestaNueva(nueva);
+            /*
+            *
+            *
             Intent i = new Intent(this,
                     com.sulus.encuestasapp.Vistas.EncuestasView.class);
+            startActivity(i);
+            *
+            * */
+            Intent i = new Intent(this,
+                    com.sulus.encuestasapp.Vistas.SituacionActivity.class);
             startActivity(i);
         }
     }

@@ -59,15 +59,15 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/respuesta1"
                 android:padding="6dp"
+                android:text="@string/respuesta1"
                 />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/respuesta2"
                 android:padding="6dp"
+                android:text="@string/respuesta2"
                 />
 
 
@@ -78,10 +78,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Otro"
-                    android:padding="6dp"
-
                     android:inputType="text"
-                    android:maxLines="1" />
+
+                    android:maxLines="1"
+                    android:padding="6dp" />
 
 
 

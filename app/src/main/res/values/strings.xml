@@ -29,69 +29,20 @@
     <string name="respuesta1">Beca</string>
     <string name="respuesta2">Crédito</string>
 
-    <!-- TODO: Valores de Spinners -->
+    <!-- TODO: Valores de Situaciones -->
 
+    <string name="PreguntaSituacion">Buenos días / tardes, nombre es:</string>
+    <string name="PreguntaSituacion2">¿Se encuentra el entrevistado?</string>
+    <string name="RespuestaSituacion1">Si</string>
+    <string name="RespuestaSituacion2">No</string>
+    <string name="RespuestaSituacion3">No lo conocen</string>
+    <string name="RespuestaSituacion4">Cambio de domicilio</string>
+    <string name="RespuestaSituacion5">Domicilio no encontrado</string>
+    <string name="RespuestaSituacion6">Falleció</string>
+    <string name="RespuestaSituacion7">Otro</string>
 
-    <string-array name="municipio_array">
-        <item>ACUAMANALA DE MIGUEL HIDALGO</item>
-        <item>ALTZAYANCA</item>
-        <item>AMAXAC DE GUERRERO</item>
-        <item>APETATITLAN DE ANTONIO CARVAJAL</item>
-        <item>APIZACO</item>
-        <item>ATLANGATEPEC</item>
-        <item>CALPULALPAN</item>
-        <item>CHIAUTEMPAN</item>
-        <item>CUAPIAXTLA</item>
-        <item>CUAXOMULCO</item>
-        <item>EMILIANO ZAPATA</item>
-        <item>ESPAÑITA</item>
-        <item>HUAMANTLA</item>
-        <item>HUEYOTLIPAN</item>
-        <item>IXTACUIXTLA DE MARIANO MATAMOROS</item>
-        <item>IXTENCO</item>
-        <item>LA MAGDALENA TLALTELULCO</item>
-        <item>LAZARO CARDENAS</item>
-        <item>MAZATECOCHCO DE JOSE MARIA MORELOS</item>
-        <item>MUÑOZ DE DOMINGO ARENAS</item>
-        <item>NANACAMILPA DE MARIANO ARISTA</item>
-        <item>NATIVITAS</item>
-        <item>PANOTLA</item>
-        <item>PAPALOTLA DE XICOHTENCATL</item>
-        <item>SAN DAMIAN TEXOLOC</item>
-        <item>SAN FRANCISCO TETLANOHCAN</item>
-        <item>SAN JERONIMO ZACUALPAN</item>
-        <item>SAN JOSE TEACALCO</item>
-        <item>CHIAUTEMPAN</item>
-        <item>SAN JOSE TEACALCO</item>
-        <item>SAN JUAN HUACTZINCO</item>
-        <item>SAN LORENZO AXOCOMANITLA</item>
-        <item>SAN LUCAS TECOPILCO</item>
-        <item>SAN PABLO DEL MONTE</item>
-        <item>SANCTORUM DE LAZARO CARDENAS</item>
-        <item>SANTA ANA NOPALUCAN</item>
-        <item>SANTA APOLONIA TEACALCO</item>
-        <item>SANTA CATARINA AYOMETLA</item>
-        <item>SANTA CRUZ QUILEHTLA</item>
-        <item>SANTA CRUZ TLAXCALA</item>
-        <item>SANTA ISABEL XILOXOXTLA</item>
-        <item>TENANCINGO</item>
-        <item>TEOLOCHOLCO</item>
-        <item>TEPETITLA DE LARDIZABAL</item>
-        <item>TEPEYANCO</item>
-        <item>TERRENATE</item>
-        <item>TETLA DE LA SOLIDARIDAD</item>
-        <item>TETLATLAHUCA</item>
-        <item>TLAXCALA</item>
-        <item>TLAXCO</item>
-        <item>TOCATLAN</item>
-        <item>TOTOLAC</item>
-        <item>TZOMPANTEPEC</item>
-        <item>XALOZTOC</item>
-        <item>XALTOCAN</item>
-        <item>XICOHTZINCO</item>
-        <item>YAUHQUEMECAN</item>
-        <item>ZACATELCO</item>
-        <item>ZITLALTEPEC DE TRINIDAD SANCHEZ SANTOS</item>
-    </string-array>
+    <string name="Introduccion">Estoy realizando una encuesta de satisfacción de los Apoyos de Gobierno Federal, que usted recibe.</string>
+    <string name="Introduccion2">¿Me permite hacerle 5 sencillas preguntas?</string>
+
 
 </resources>

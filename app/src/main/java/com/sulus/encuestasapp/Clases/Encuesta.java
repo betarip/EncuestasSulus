@@ -1,8 +1,7 @@
 package com.sulus.encuestasapp.Clases;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by betaripv on 06/03/18.
@@ -28,6 +27,8 @@ public class Encuesta {
 
      */
     private double lat, longi;
+    private String situacion;
+    private int contestada;
 
     public Encuesta(){
 
@@ -145,5 +146,42 @@ public class Encuesta {
 
     public void setLongi(double longi) {
         this.longi = longi;
+    }
+
+    public String getSituacion() {
+        return situacion;
+    }
+
+    public void setSituacion(String situacion) {
+        this.situacion = situacion;
+    }
+
+    public int getContestada() {
+        return contestada;
+    }
+
+    public void setContestada(int contestada) {
+        this.contestada = contestada;
+    }
+
+    @Override
+    public String toString() {
+        return "Encuesta{" +
+                "respuestas=" + Arrays.toString(respuestas) +
+                ", municipio='" + municipio + '\'' +
+                ", seccion='" + seccion + '\'' +
+                ", telfono='" + telfono + '\'' +
+                ", correo='" + correo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", app1='" + app1 + '\'' +
+                ", app2='" + app2 + '\'' +
+                ", identificador=" + identificador +
+                ", fechaCaptura=" + fechaCaptura +
+                ", fechaSubida=" + fechaSubida +
+                ", lat=" + lat +
+                ", longi=" + longi +
+                ", situacion='" + situacion + '\'' +
+                ", contestada=" + contestada +
+                '}';
     }
 }

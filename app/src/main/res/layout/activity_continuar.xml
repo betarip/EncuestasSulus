@@ -32,10 +32,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+
 
 
             <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -60,27 +57,25 @@
 
         </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+
+        <Button
+            android:id="@+id/continuar"
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_alignParentRight="true"
+            android:onClick="siguienteEvaluacion"
+            android:text="Siguiente"
+
+            />
 
 
-            <Button
-                android:id="@+id/continuar"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:onClick="siguienteEvaluacion"
-                android:text="Siguiente"
-
-                />
+    </RelativeLayout>
 
 
-        </RelativeLayout>
-
-
-    </LinearLayout>
 </LinearLayout>

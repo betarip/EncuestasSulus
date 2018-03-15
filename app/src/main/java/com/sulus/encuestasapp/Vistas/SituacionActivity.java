@@ -9,9 +9,10 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -21,8 +22,6 @@ import android.widget.Toast;
 
 import com.sulus.encuestasapp.Clases.Encuesta;
 import com.sulus.encuestasapp.R;
-
-import static com.sulus.encuestasapp.Vistas.SelectionTexto.REQUEST_LOCATION;
 
 public class SituacionActivity extends AppCompatActivity implements LocationListener {
 
@@ -46,12 +45,15 @@ public class SituacionActivity extends AppCompatActivity implements LocationList
         provider = locationManager.getBestProvider(criteria, false);
         if (provider != null && !provider.equals("")) {
 
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-                requestPermissions(
-                        new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                                android.Manifest.permission.ACCESS_FINE_LOCATION},
-                        REQUEST_LOCATION);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
                 return;
             }
             Location location = locationManager.getLastKnownLocation(provider);
@@ -71,40 +73,47 @@ public class SituacionActivity extends AppCompatActivity implements LocationList
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 // checkedId is the RadioButton selected
+                respuesta = "";
                 switch (checkedId) {
                     case R.id.radio_res1:
                         continuarEntrevista = true;
                         respuesta = getBaseContext().getResources().getString(R.string.RespuestaSituacion1);
                         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                        edtOtro.setText("");
                         break;
                     case R.id.radio_res2:
                         continuarEntrevista = false;
                         respuesta = getBaseContext().getResources().getString(R.string.RespuestaSituacion2);
                         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                        edtOtro.setText("");
                         break;
                     case R.id.radio_res3:
                         continuarEntrevista = false;
                         respuesta = getBaseContext().getResources().getString(R.string.RespuestaSituacion3);
                         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                        edtOtro.setText("");
                         break;
                     case R.id.radio_res4:
                         continuarEntrevista = false;
                         respuesta = getBaseContext().getResources().getString(R.string.RespuestaSituacion4);
                         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                        edtOtro.setText("");
                         break;
                     case R.id.radio_res5:
                         continuarEntrevista = false;
                         respuesta = getBaseContext().getResources().getString(R.string.RespuestaSituacion5);
                         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                        edtOtro.setText("");
                         break;
                     case R.id.radio_res6:
                         respuesta = getBaseContext().getResources().getString(R.string.RespuestaSituacion6);
                         continuarEntrevista = false;
                         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                        edtOtro.setText("");
                         break;
                     case R.id.radio_res7:
                         continuarEntrevista = false;
-
+                        edtOtro.requestFocus();
                         break;
                 }
             }
@@ -122,7 +131,11 @@ public class SituacionActivity extends AppCompatActivity implements LocationList
             /**
              * Finalizar entrevista
              */
+            if (respuesta.equals("")) {
+                respuesta = edtOtro.getText().toString();
+            }
             Encuesta guardada = Encuesta.getEncuestaNueva();
+            guardada.setSituacion(respuesta);
             guardada.setLat(latitud);
             guardada.setLongi(longitud);
             i = new Intent(this, TerminoEncuesta.class);

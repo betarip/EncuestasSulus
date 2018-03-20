@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputFilter;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.sulus.encuestasapp.Clases.Encuesta;
 import com.sulus.encuestasapp.Clases.Municipio;
@@ -120,7 +118,7 @@ public class ActividadInicioEncuesta extends AppCompatActivity {
             Encuesta nueva = new Encuesta();
             //nueva.setMunicipio(edtMunicipio.getText().toString());
             //nueva.setSeccion(edtSeccion.getText().toString());
-            nueva.setIdentificador(Integer.parseInt(edtId.getText().toString()));
+            nueva.setIdentificador(edtId.getText().toString());
             nueva.setNombre(edtNombre.getText().toString().replace("Ñ", "N"));
             nueva.setApp1(edtNombre.getText().toString().replace("Ñ", "N"));
             nueva.setApp2(edtNombre.getText().toString().replace("Ñ", "N"));

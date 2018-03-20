@@ -18,8 +18,8 @@ public class Encuesta {
     private String nombre;
     private String app1;
     private String app2;
-    private int identificador;
-    private Date fechaCaptura;
+    private String identificador;
+    private String fechaCaptura;
     private Date fechaSubida;
     /*
 
@@ -100,11 +100,11 @@ public class Encuesta {
         this.app1 = app1;
     }
 
-    public int getIdentificador() {
+    public String getIdentificador() {
         return identificador;
     }
 
-    public void setIdentificador(int identificador) {
+    public void setIdentificador(String identificador) {
         this.identificador = identificador;
     }
 
@@ -116,11 +116,11 @@ public class Encuesta {
         this.app2 = app2;
     }
 
-    public Date getFechaCaptura() {
+    public String getFechaCaptura() {
         return fechaCaptura;
     }
 
-    public void setFechaCaptura(Date fechaCaptura) {
+    public void setFechaCaptura(String fechaCaptura) {
         this.fechaCaptura = fechaCaptura;
     }
 

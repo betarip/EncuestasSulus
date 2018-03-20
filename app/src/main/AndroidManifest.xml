@@ -43,7 +43,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Vistas.ContinuarActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".Vistas.SubirActivity"></activity>
     </application>
 
 </manifest>

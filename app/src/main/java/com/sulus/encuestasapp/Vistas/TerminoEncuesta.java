@@ -10,8 +10,8 @@ import android.widget.Toast;
 
 import com.sulus.encuestasapp.Clases.Encuesta;
 import com.sulus.encuestasapp.R;
-
-import java.util.Date;
+import com.sulus.encuestasapp.Utilerias.DatabaseHandler;
+import com.sulus.encuestasapp.Utilerias.Fechas;
 
 public class TerminoEncuesta extends AppCompatActivity {
 
@@ -43,8 +43,10 @@ public class TerminoEncuesta extends AppCompatActivity {
         /*
         * Guardar informacion en el SQLite
         * */
-        Encuesta.getEncuestaNueva().setFechaCaptura(new Date());
+        Encuesta.getEncuestaNueva().setFechaCaptura(Fechas.getDateTime());
         Toast.makeText(this, Encuesta.getEncuestaNueva().toString(), Toast.LENGTH_LONG).show();
+        DatabaseHandler db = new DatabaseHandler(this);
+        db.addEncuesta(Encuesta.getEncuestaNueva());
         Encuesta.cleanEncuestaNueva();
 
         Intent home = new Intent(this, ActividadControl.class);

@@ -44,5 +44,7 @@
     <string name="Introduccion">Estoy realizando una encuesta de satisfacción de los Apoyos de Gobierno Federal, que usted recibe.</string>
     <string name="Introduccion2">¿Me permite hacerle 5 sencillas preguntas?</string>
 
+    <string name="porSubir">Encuestas por subir (%1$d) </string>
+
 
 </resources>

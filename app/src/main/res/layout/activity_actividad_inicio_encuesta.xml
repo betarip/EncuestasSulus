@@ -18,7 +18,7 @@
             android:id="@+id/edit_id_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Identificador del usuario">
+            android:hint="ID de Encuestado">
 
             <EditText
                 android:id="@+id/edit_id"
